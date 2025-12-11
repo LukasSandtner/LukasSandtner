@@ -6,7 +6,7 @@
 Here are some ideas to get you started:
 -->
 - 🔭 I’m currently working on academical things.
-- 🌱 I’m currently learning JavaFX, C++, Computer architectures and many more.
+- 🌱 I’m currently learning Java, Oracle SQL, Computer architectures and many more.
 - 👯 I’m looking to collaborate on managing everything.
 - 🤔 I’m looking for help with my life-style.
 - 💬 Ask me about cool facts including Sci-fi.
