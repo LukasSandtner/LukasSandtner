@@ -1,6 +1,6 @@
 ## Hi there 👋
 - 🔭 I’m currently working on academical things.
-- 🌱 I’m currently learning Java, Oracle SQL, C#, C/C++, Networking, Computer architectures and many more.
+- 🌱 I’m currently learning Oracle SQL, C/C++, Networking, Compilators and many more.
 - 👯 I’m looking to collaborate on managing everything.
 - 🤔 I’m looking for help with my life-style.
 - 💬 Ask me about cool facts including Sci-fi.
