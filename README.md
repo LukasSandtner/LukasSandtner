@@ -7,4 +7,6 @@
 - 💬 Ask me about cool facts including Sci-fi.
 - 📫 How to reach me: sandtner05@gmail.com
 - ⚡ Fun fact: In the world of Dune, AI is banned due to the Butlerian Jihad, so humans train their minds to extreme levels—Mentats, for example, function as living computers. 🚀
-
+  
+###SKILLS:
+[![My Skills](https://skillicons.dev/icons?i=js,html,css)](https://skillicons.dev)
