@@ -34,7 +34,9 @@
     <!-- ===== BOOT SEQUENCE ===== -->
     <div id="boot" role="dialog" aria-label="Intro">
       <pre id="bootText"></pre>
-      <button id="bootSkip" type="button">[ PRESS ANY KEY TO SKIP ]</button>
+      <button id="bootSkip" type="button" data-i18n="boot.skip">
+        [ PRESS ANY KEY TO SKIP ]
+      </button>
     </div>
 
     <!-- ===== BACKGROUND + CRT ===== -->
@@ -44,23 +46,53 @@
 
     <!-- ===== HUD ===== -->
     <header class="hud" id="hud">
-      <a class="hud__logo" href="#hero" aria-label="Back to top"
+      <a
+        class="hud__logo"
+        href="#hero"
+        aria-label="Back to top"
+        data-i18n-aria="aria.top"
         >LS<span>_</span></a
       >
-      <nav class="hud__nav" id="nav" aria-label="Main">
-        <a href="#profile" data-nav="profile">PROFILE</a>
-        <a href="#stats" data-nav="stats">STATS</a>
-        <a href="#quests" data-nav="quests">QUESTS</a>
-        <a href="#training" data-nav="training">TRAINING</a>
-        <a href="#awards" data-nav="awards">AWARDS</a>
-        <a href="#loot" data-nav="loot">LOOT</a>
-        <a href="#contact" data-nav="contact">CONTACT</a>
+      <nav
+        class="hud__nav"
+        id="nav"
+        aria-label="Main"
+        data-i18n-aria="aria.nav"
+      >
+        <a href="#profile" data-nav="profile" data-i18n="nav.profile"
+          >PROFILE</a
+        >
+        <a href="#stats" data-nav="stats" data-i18n="nav.stats">STATS</a>
+        <a href="#quests" data-nav="quests" data-i18n="nav.quests">QUESTS</a>
+        <a href="#training" data-nav="training" data-i18n="nav.training"
+          >TRAINING</a
+        >
+        <a href="#awards" data-nav="awards" data-i18n="nav.awards">AWARDS</a>
+        <a href="#loot" data-nav="loot" data-i18n="nav.loot">LOOT</a>
+        <a href="#contact" data-nav="contact" data-i18n="nav.contact"
+          >CONTACT</a
+        >
       </nav>
       <div class="hud__stats">
-        <span class="hud__item">SCORE <b id="score">000000</b></span>
         <span class="hud__item"
-          >COINS <b id="coins">00</b>/<b id="coinsMax">00</b></span
+          ><span data-i18n="hud.score">SCORE</span>
+          <b id="score">000000</b></span
         >
+        <span class="hud__item"
+          ><span data-i18n="hud.coins">COINS</span> <b id="coins">00</b>/<b
+            id="coinsMax"
+            >00</b
+          ></span
+        >
+        <button
+          class="hud__lang"
+          id="lang"
+          type="button"
+          data-i18n-aria="aria.lang"
+          aria-label="Switch language to Czech"
+        >
+          <span class="on">EN</span><span>CS</span>
+        </button>
         <button class="hud__snd" id="sound" type="button" aria-pressed="false">
           SND OFF
         </button>
@@ -70,6 +102,7 @@
         id="burger"
         type="button"
         aria-label="Toggle menu"
+        data-i18n-aria="aria.menu"
         aria-expanded="false"
         aria-controls="nav"
       >
@@ -82,19 +115,25 @@
       <!-- ===== HERO ===== -->
       <section id="hero" class="stage hero">
         <div class="hero__inner" id="heroInner">
-          <p class="eyebrow blink-slow">&gt; PLAYER 1 READY_</p>
+          <p class="eyebrow blink-slow" data-i18n="hero.eyebrow">
+            &gt; PLAYER 1 READY_
+          </p>
           <h1 class="glitch" data-text="LUKÁŠ SANDTNER">LUKÁŠ SANDTNER</h1>
           <p class="role">
             <span class="role__prompt">&gt;</span> <span id="typed"></span
             ><span class="cursor">█</span>
           </p>
-          <p class="hero__lead">
+          <p class="hero__lead" data-i18n="hero.lead">
             Information technologies student from the University of Pardubice.
             Collecting skills, certificates and bugs since 2020.
           </p>
           <div class="hero__cta">
-            <a class="btn" href="#profile">▶ PRESS START</a>
-            <a class="btn btn--alt" href="#contact">INSERT COIN</a>
+            <a class="btn" href="#profile" data-i18n="hero.start"
+              >▶ PRESS START</a
+            >
+            <a class="btn btn--alt" href="#contact" data-i18n="hero.coin"
+              >INSERT COIN</a
+            >
           </div>
         </div>
         <div class="hero__sprites" aria-hidden="true">
@@ -107,7 +146,9 @@
           <span class="sprite sprite--c" data-sprite="heart" data-px="5"></span>
           <span class="sprite sprite--d" data-sprite="ship" data-px="6"></span>
         </div>
-        <a class="scrollhint" href="#profile">SCROLL<br />▼</a>
+        <a class="scrollhint" href="#profile" data-i18n="hero.scroll"
+          >SCROLL<br />▼</a
+        >
       </section>
 
       <!-- ===== MARQUEE ===== -->
@@ -119,8 +160,8 @@
       <section id="profile" class="stage" data-title="Player profile">
         <div class="wrap">
           <header class="stage__head" data-reveal>
-            <span class="kicker">STAGE 01</span>
-            <h2 data-scramble>PLAYER PROFILE</h2>
+            <span class="kicker" data-i18n="k.1">STAGE 01</span>
+            <h2 data-scramble data-i18n="h.profile">PLAYER PROFILE</h2>
           </header>
 
           <div class="grid grid--profile">
@@ -130,19 +171,20 @@
               </div>
               <div class="term__body">
                 <p><span class="c-pink">$</span> cat profile.txt</p>
-                <p>
+                <p data-i18n="p.1">
                   Hard-working student at the
                   <b class="c-cyan">University of Pardubice</b>, Faculty of
                   Electrical Engineering and Informatics (FEI). IT enthusiast,
                   proficient with office software and UNIX or Windows operating
                   systems.
                 </p>
-                <p>
+                <p data-i18n="p.2">
                   Beginner in computer networking. Programming knowledge in
                   <b class="c-yellow">Java</b>, <b class="c-yellow">SQL</b>,
-                  <b class="c-yellow">Javascript</b> and <b class="c-yellow">C</b>.
+                  <b class="c-yellow">Javascript</b> and
+                  <b class="c-yellow">C</b>.
                 </p>
-                <p>
+                <p data-i18n="p.3">
                   Known for reaching goals on time and within the set
                   requirements. Motivated approach and the ability to build
                   solid, productive relationships with colleagues. Always
@@ -155,36 +197,46 @@
             </article>
 
             <aside class="panel card tilt" data-reveal="right">
-              <h3 class="card__title">PLAYER CARD</h3>
+              <h3 class="card__title" data-i18n="c.card">PLAYER CARD</h3>
               <dl class="card__list">
                 <div>
-                  <dt>NAME</dt>
+                  <dt data-i18n="dt.name">NAME</dt>
                   <dd>Lukáš Sandtner</dd>
                 </div>
                 <div>
-                  <dt>CLASS</dt>
-                  <dd>IT Student</dd>
+                  <dt data-i18n="dt.class">CLASS</dt>
+                  <dd data-i18n="dd.class">IT Student</dd>
                 </div>
                 <div>
-                  <dt>GUILD</dt>
-                  <dd>University of Pardubice, FEI</dd>
+                  <dt data-i18n="dt.guild">GUILD</dt>
+                  <dd data-i18n="dd.guild">University of Pardubice, FEI</dd>
                 </div>
                 <div>
-                  <dt>BASE</dt>
-                  <dd>Kolín, Czechia</dd>
+                  <dt data-i18n="dt.base">BASE</dt>
+                  <dd data-i18n="v.base">Kolín, Czechia</dd>
                 </div>
                 <div>
-                  <dt>MAIN QUEST</dt>
-                  <dd>Level up in code</dd>
+                  <dt data-i18n="dt.main">MAIN QUEST</dt>
+                  <dd data-i18n="dd.main">Level up in code</dd>
                 </div>
               </dl>
               <div class="counters">
                 <div>
-                  <b data-count="6">0</b><span>YEARS OF IT STUDIES</span>
+                  <b data-count="6">0</b
+                  ><span data-i18n="cnt.years">YEARS OF IT STUDIES</span>
                 </div>
-                <div><b data-count="15">0</b><span>CODE LANGUAGES</span></div>
-                <div><b data-count="3">0</b><span>INTERNSHIPS</span></div>
-                <div><b data-count="4">0</b><span>SPOKEN LANGUAGES</span></div>
+                <div>
+                  <b data-count="15">0</b
+                  ><span data-i18n="cnt.code">CODE LANGUAGES</span>
+                </div>
+                <div>
+                  <b data-count="3">0</b
+                  ><span data-i18n="cnt.intern">INTERNSHIPS</span>
+                </div>
+                <div>
+                  <b data-count="4">0</b
+                  ><span data-i18n="cnt.spoken">SPOKEN LANGUAGES</span>
+                </div>
               </div>
             </aside>
           </div>
@@ -195,13 +247,13 @@
       <section id="stats" class="stage" data-title="Character stats">
         <div class="wrap">
           <header class="stage__head" data-reveal>
-            <span class="kicker">STAGE 02</span>
-            <h2 data-scramble>CHARACTER STATS</h2>
+            <span class="kicker" data-i18n="k.2">STAGE 02</span>
+            <h2 data-scramble data-i18n="h.stats">CHARACTER STATS</h2>
           </header>
 
           <div class="grid grid--stats">
             <div class="panel tilt" data-reveal="left">
-              <h3 class="card__title">CODE SKILLS</h3>
+              <h3 class="card__title" data-i18n="c.code">CODE SKILLS</h3>
               <ul class="stats" id="codeStats">
                 <li class="stat" data-level="9">
                   <span class="stat__name">JAVA</span
@@ -224,7 +276,7 @@
                   ><span class="stat__val"></span>
                 </li>
                 <li class="stat" data-level="5">
-                  <span class="stat__name">NETWORKS</span
+                  <span class="stat__name" data-i18n="s.net">NETWORKS</span
                   ><span class="stat__bar"></span
                   ><span class="stat__val"></span>
                 </li>
@@ -243,13 +295,15 @@
                   ><span class="stat__bar"></span
                   ><span class="stat__val"></span>
                 </li>
-                <li class="stat" data-level="4">
-                  <span class="stat__name">DATA STRUCTURES</span
+                <li class="stat" data-level="10">
+                  <span class="stat__name" data-i18n="s.ds"
+                    >DATA STRUCTURES</span
                   ><span class="stat__bar"></span
                   ><span class="stat__val"></span>
                 </li>
                 <li class="stat" data-level="6">
-                  <span class="stat__name">CYBER SECURITY</span
+                  <span class="stat__name" data-i18n="s.cyber"
+                    >CYBER SECURITY</span
                   ><span class="stat__bar"></span
                   ><span class="stat__val"></span>
                 </li>
@@ -257,47 +311,55 @@
             </div>
 
             <div class="panel tilt" data-reveal="right">
-              <h3 class="card__title">SOFT SKILLS</h3>
+              <h3 class="card__title" data-i18n="c.soft">SOFT SKILLS</h3>
               <ul class="perks">
                 <li data-reveal style="--i: 0">
-                  <span>◆</span> Administrative skills
+                  <span>◆</span>
+                  <span data-i18n="perk.1">Administrative skills</span>
                 </li>
                 <li data-reveal style="--i: 1">
-                  <span>◆</span> Attention to detail
+                  <span>◆</span>
+                  <span data-i18n="perk.2">Attention to detail</span>
                 </li>
                 <li data-reveal style="--i: 2">
-                  <span>◆</span> High efficiency
+                  <span>◆</span> <span data-i18n="perk.3">High efficiency</span>
                 </li>
                 <li data-reveal style="--i: 3">
-                  <span>◆</span> Time management
+                  <span>◆</span> <span data-i18n="perk.4">Time management</span>
                 </li>
                 <li data-reveal style="--i: 4">
-                  <span>◆</span> Working in an international team
+                  <span>◆</span>
+                  <span data-i18n="perk.5"
+                    >Working in an international team</span
+                  >
                 </li>
                 <li data-reveal style="--i: 5">
-                  <span>◆</span> Innovative approaches
+                  <span>◆</span>
+                  <span data-i18n="perk.6">Innovative approaches</span>
                 </li>
               </ul>
 
-              <h3 class="card__title card__title--sp">LANGUAGES</h3>
+              <h3 class="card__title card__title--sp" data-i18n="c.lang">
+                LANGUAGES
+              </h3>
               <ul class="stats" id="langStats">
                 <li class="stat" data-level="10" data-label="NATIVE">
-                  <span class="stat__name">CZECH</span
+                  <span class="stat__name" data-i18n="s.cs">CZECH</span
                   ><span class="stat__bar"></span
                   ><span class="stat__val"></span>
                 </li>
                 <li class="stat" data-level="9" data-label="EXCELLENT">
-                  <span class="stat__name">ENGLISH</span
+                  <span class="stat__name" data-i18n="s.en">ENGLISH</span
                   ><span class="stat__bar"></span
                   ><span class="stat__val"></span>
                 </li>
                 <li class="stat" data-level="3" data-label="BASIC">
-                  <span class="stat__name">RUSSIAN</span
+                  <span class="stat__name" data-i18n="s.ru">RUSSIAN</span
                   ><span class="stat__bar"></span
                   ><span class="stat__val"></span>
                 </li>
                 <li class="stat" data-level="2" data-label="BEGINNER">
-                  <span class="stat__name">GERMAN</span
+                  <span class="stat__name" data-i18n="s.de">GERMAN</span
                   ><span class="stat__bar"></span
                   ><span class="stat__val"></span>
                 </li>
@@ -306,7 +368,9 @@
           </div>
 
           <div class="panel tilt inventory" data-reveal>
-            <h3 class="card__title">WHAT I KNOW / INVENTORY</h3>
+            <h3 class="card__title" data-i18n="c.inv">
+              WHAT I KNOW / INVENTORY
+            </h3>
             <ul class="chips" id="chips">
               <li>Git</li>
               <li>Docker</li>
@@ -351,36 +415,42 @@
       <section id="quests" class="stage" data-title="Quest log">
         <div class="wrap">
           <header class="stage__head" data-reveal>
-            <span class="kicker">STAGE 03</span>
-            <h2 data-scramble>QUEST LOG</h2>
-            <p class="stage__sub">Work experience and internships</p>
+            <span class="kicker" data-i18n="k.3">STAGE 03</span>
+            <h2 data-scramble data-i18n="h.quests">QUEST LOG</h2>
+            <p class="stage__sub" data-i18n="sub.quests">
+              Work experience and internships
+            </p>
           </header>
 
           <ol class="timeline">
             <li class="quest" data-reveal="right">
               <span class="quest__node" aria-hidden="true"></span>
               <div class="panel tilt">
-                <span class="quest__date">2025 - NOW</span>
-                <h3>PILOT TEAM Employee</h3>
+                <span class="quest__date" data-i18n="d.now">2025 - NOW</span>
+                <h3 data-i18n="q.pilot.h">PILOT TEAM Employee</h3>
                 <p class="quest__place">
                   Toyota Motor Manufacturing Czech Republic
                 </p>
                 <ul class="quest__list">
-                  <li>Automatisation of administrative processes.</li>
-                  <li>
+                  <li data-i18n="q.pilot.1">
+                    Automatisation of administrative processes.
+                  </li>
+                  <li data-i18n="q.pilot.2">
                     Proggraming and maintenance of software applications for
                     administration and logistics departments.
                   </li>
-                  <li>
+                  <li data-i18n="q.pilot.3">
                     Collaboration with cross-functional teams to identify and
                     implement process improvements.
                   </li>
-                  <li>
+                  <li data-i18n="q.pilot.4">
                     Preparation of reports and documentation for management
                     review with offshore colleagues from Japan and France.
                   </li>
                 </ul>
-                <span class="tag">EMPLOYMENT + INTERNSHIP</span>
+                <span class="tag" data-i18n="t.empint"
+                  >EMPLOYMENT + INTERNSHIP</span
+                >
               </div>
             </li>
 
@@ -388,50 +458,66 @@
               <span class="quest__node" aria-hidden="true"></span>
               <div class="panel tilt">
                 <span class="quest__date">2023 - 2024</span>
-                <h3>Technical Department Employee</h3>
+                <h3 data-i18n="q.tech.h">Technical Department Employee</h3>
                 <p class="quest__place">Domov Barbora, Kutná Hora</p>
                 <ul class="quest__list">
-                  <li>Archiving technical documentation.</li>
-                  <li>
+                  <li data-i18n="q.tech.1">
+                    Archiving technical documentation.
+                  </li>
+                  <li data-i18n="q.tech.2">
                     Securing the building, regular checks of fire and motion
                     alarm systems.
                   </li>
-                  <li>Coordinating inspections with specialist firms.</li>
-                  <li>Administering deliveries of goods and other services.</li>
+                  <li data-i18n="q.tech.3">
+                    Coordinating inspections with specialist firms.
+                  </li>
+                  <li data-i18n="q.tech.4">
+                    Administering deliveries of goods and other services.
+                  </li>
                 </ul>
-                <span class="tag">EMPLOYMENT</span>
+                <span class="tag" data-i18n="t.emp">EMPLOYMENT</span>
               </div>
             </li>
 
             <li class="quest" data-reveal="right">
               <span class="quest__node" aria-hidden="true"></span>
               <div class="panel tilt">
-                <span class="quest__date">2023 · 4 weeks</span>
-                <h3>Service Technician (Internship)</h3>
+                <span class="quest__date" data-i18n="d.4w">2023 · 4 weeks</span>
+                <h3 data-i18n="q.serv.h">Service Technician</h3>
                 <p class="quest__place">Computer servis, Kolín</p>
                 <ul class="quest__list">
-                  <li>Hands-on troubleshooting of consumer electronics.</li>
-                  <li>Hardware and software experience.</li>
-                  <li>Gained knowledge of ecology and business economics.</li>
+                  <li data-i18n="q.serv.1">
+                    Hands-on troubleshooting of consumer electronics.
+                  </li>
+                  <li data-i18n="q.serv.2">
+                    Hardware and software experience.
+                  </li>
+                  <li data-i18n="q.serv.3">
+                    Gained knowledge of ecology and business economics.
+                  </li>
                 </ul>
-                <span class="tag tag--alt">INTERNSHIP</span>
+                <span class="tag tag--alt" data-i18n="t.int">INTERNSHIP</span>
               </div>
             </li>
 
             <li class="quest" data-reveal="left">
               <span class="quest__node" aria-hidden="true"></span>
               <div class="panel tilt">
-                <span class="quest__date">2021 · 3 weeks</span>
-                <h3>Office Worker (Internship)</h3>
+                <span class="quest__date" data-i18n="d.3w">2021 · 3 weeks</span>
+                <h3 data-i18n="q.off.h">Office Worker</h3>
                 <p class="quest__place">Acsoni, Belfast</p>
                 <ul class="quest__list">
-                  <li>
+                  <li data-i18n="q.off.1">
                     Built a PC and designed the network topology of an office.
                   </li>
-                  <li>Record keeping in Microsoft Excel.</li>
-                  <li>Phone support for service customers.</li>
+                  <li data-i18n="q.off.2">
+                    Record keeping in Microsoft Excel.
+                  </li>
+                  <li data-i18n="q.off.3">
+                    Phone support for service customers.
+                  </li>
                 </ul>
-                <span class="tag tag--alt">INTERNSHIP</span>
+                <span class="tag tag--alt" data-i18n="t.int">INTERNSHIP</span>
               </div>
             </li>
 
@@ -439,9 +525,9 @@
               <span class="quest__node" aria-hidden="true"></span>
               <div class="panel tilt">
                 <span class="quest__date">2020 - 2023</span>
-                <h3>MT Restaurant Employee</h3>
+                <h3 data-i18n="q.mt.h">MT Restaurant Employee</h3>
                 <p class="quest__place">McDonald's, Vrbová Lhota</p>
-                <span class="tag">EMPLOYMENT</span>
+                <span class="tag" data-i18n="t.emp">EMPLOYMENT</span>
               </div>
             </li>
           </ol>
@@ -452,9 +538,9 @@
       <section id="training" class="stage" data-title="Training grounds">
         <div class="wrap">
           <header class="stage__head" data-reveal>
-            <span class="kicker">STAGE 04</span>
-            <h2 data-scramble>TRAINING GROUNDS</h2>
-            <p class="stage__sub">Education</p>
+            <span class="kicker" data-i18n="k.4">STAGE 04</span>
+            <h2 data-scramble data-i18n="h.training">TRAINING GROUNDS</h2>
+            <p class="stage__sub" data-i18n="sub.training">Education</p>
           </header>
 
           <article class="panel edu tilt" data-reveal>
@@ -462,13 +548,15 @@
               <span data-sprite="trophy" data-px="6"></span>
             </div>
             <div class="edu__body">
-              <span class="quest__date">2024 - NOW</span>
-              <h3>
+              <span class="quest__date" data-i18n="d.now">2024 - NOW</span>
+              <h3 data-i18n="e.1.h">
                 Undergraduate program, Faculty of Electrical Engineering and
                 Informatics, University of Pardubice
               </h3>
-              <p class="quest__place">Information Technology | ?????</p>
-              <p>
+              <p class="quest__place" data-i18n="e.1.place">
+                Information Technology | ?????
+              </p>
+              <p data-i18n="e.1.p">
                 Ongoing studies <b class="c-yellow">merit scholarship</b>. So
                 far all subjects have been completed without
                 <b class="c-yellow">any grades below D</b>.
@@ -481,19 +569,21 @@
             </div>
             <div class="edu__body">
               <span class="quest__date">2020 - 2024</span>
-              <h3>
+              <h3 data-i18n="e.2.h">
                 Higher Vocational School, Secondary Technical School and
                 Language School with the right to hold state language exams
               </h3>
-              <p class="quest__place">Information Technology | 18-20-M/01</p>
-              <p>
+              <p class="quest__place" data-i18n="e.2.place">
+                Information Technology | 18-20-M/01
+              </p>
+              <p data-i18n="e.2.p">
                 Graduated <b class="c-yellow">with honors</b>. Graduation
                 project, a CMS web application with MVC architecture, defended
                 with an <b class="c-yellow">excellent</b> grade.
               </p>
               <div class="edu__tags">
-                <span class="tag">WITH HONORS</span>
-                <span class="tag tag--alt">CMS WEB APP</span>
+                <span class="tag" data-i18n="t.honors">WITH HONORS</span>
+                <span class="tag tag--alt" data-i18n="t.cms">CMS WEB APP</span>
                 <span class="tag tag--alt">MVC</span>
               </div>
             </div>
@@ -505,9 +595,9 @@
       <section id="awards" class="stage" data-title="Achievements">
         <div class="wrap">
           <header class="stage__head" data-reveal>
-            <span class="kicker">STAGE 05</span>
-            <h2 data-scramble>ACHIEVEMENTS</h2>
-            <p class="stage__sub">Unlocked</p>
+            <span class="kicker" data-i18n="k.5">STAGE 05</span>
+            <h2 data-scramble data-i18n="h.awards">ACHIEVEMENTS</h2>
+            <p class="stage__sub" data-i18n="sub.awards">Unlocked</p>
           </header>
 
           <div class="grid grid--awards">
@@ -516,13 +606,13 @@
                 <span data-sprite="star" data-px="7"></span>
               </div>
               <h3>Project SITE</h3>
-              <p>
+              <p data-i18n="a.site.p">
                 Promoting my technical school and the Czech power industry
                 abroad. Creating presentations in PowerPoint. Team presentation
                 in English in <b class="c-cyan">Poland</b> and
                 <b class="c-cyan">Cyprus</b>.
               </p>
-              <span class="tag">INTERNATIONAL</span>
+              <span class="tag" data-i18n="t.intl">INTERNATIONAL</span>
             </article>
 
             <article class="panel award tilt" data-reveal="right">
@@ -530,13 +620,15 @@
                 <span data-sprite="trophy" data-px="7"></span>
               </div>
               <h3>CNNA: Introduction to Networks course</h3>
-              <p>
+              <p data-i18n="a.cisco.p">
                 Certificate of
                 <b class="c-cyan">CISCO Networking Academy</b> with grade
                 <b class="c-cyan">A</b>, issued by Lynn Bloomer, Cisco
                 Networking Academy Disrector.
               </p>
-              <span class="tag tag--alt">CISCO · STUDENT LEVEL</span>
+              <span class="tag tag--alt" data-i18n="t.cisco"
+                >CISCO · STUDENT LEVEL</span
+              >
             </article>
 
             <article class="panel award tilt" data-reveal="right">
@@ -544,7 +636,7 @@
                 <span data-sprite="trophy" data-px="7"></span>
               </div>
               <h3>First Certificate in English</h3>
-              <p>
+              <p data-i18n="a.fce.p">
                 Certificate at level <b class="c-cyan">B2</b> with grade
                 <b class="c-cyan">C</b>, issued by Cambridge Assessment English
                 (part of the University of Cambridge).
@@ -559,48 +651,59 @@
       <section id="loot" class="stage" data-title="Loot and side quests">
         <div class="wrap">
           <header class="stage__head" data-reveal>
-            <span class="kicker">STAGE 06</span>
-            <h2 data-scramble>SIDE QUESTS</h2>
-            <p class="stage__sub">Interests and what I am learning now</p>
+            <span class="kicker" data-i18n="k.6">STAGE 06</span>
+            <h2 data-scramble data-i18n="h.loot">SIDE QUESTS</h2>
+            <p class="stage__sub" data-i18n="sub.loot">
+              Interests and what I am learning now
+            </p>
           </header>
 
           <ul class="loot">
             <li class="panel loot__item tilt" data-reveal style="--i: 0">
-              <span class="loot__ico">✈</span>Traveling
+              <span class="loot__ico">✈</span
+              ><span data-i18n="loot.1">Traveling</span>
             </li>
             <li class="panel loot__item tilt" data-reveal style="--i: 1">
-              <span class="loot__ico">?</span>Knowledge olympiads
+              <span class="loot__ico">?</span
+              ><span data-i18n="loot.2">Knowledge olympiads</span>
             </li>
             <li class="panel loot__item tilt" data-reveal style="--i: 2">
-              <span class="loot__ico">»</span>Charity runs
+              <span class="loot__ico">»</span
+              ><span data-i18n="loot.3">Charity runs</span>
             </li>
             <li class="panel loot__item tilt" data-reveal style="--i: 3">
-              <span class="loot__ico">愛</span>Driving my JDM car
+              <span class="loot__ico">愛</span
+              ><span data-i18n="loot.4">Driving my JDM car</span>
             </li>
             <li class="panel loot__item tilt" data-reveal style="--i: 4">
-              <span class="loot__ico">❤</span>Loving my girlfriend
+              <span class="loot__ico">❤</span
+              ><span data-i18n="loot.5">Loving my girlfriend</span>
             </li>
             <li class="panel loot__item tilt" data-reveal style="--i: 5">
-              <span class="loot__ico">♜</span>History
+              <span class="loot__ico">♜</span
+              ><span data-i18n="loot.6">History</span>
             </li>
             <li class="panel loot__item tilt" data-reveal style="--i: 6">
-              <span class="loot__ico">▣</span>Photography
+              <span class="loot__ico">▣</span
+              ><span data-i18n="loot.7">Photography</span>
             </li>
             <li class="panel loot__item tilt" data-reveal style="--i: 7">
-              <span class="loot__ico">₿</span>Crypto- currencies
+              <span class="loot__ico">₿</span
+              ><span data-i18n="loot.8">Crypto- currencies</span>
             </li>
             <li class="panel loot__item tilt" data-reveal style="--i: 8">
-              <span class="loot__ico">$</span>Shareholder
+              <span class="loot__ico">$</span
+              ><span data-i18n="loot.9">Shareholder</span>
             </li>
             <li class="panel loot__item tilt" data-reveal style="--i: 9">
-              <span class="loot__ico">✚</span>Plasma donor
+              <span class="loot__ico">✚</span
+              ><span data-i18n="loot.10">Plasma donor</span>
             </li>
           </ul>
 
           <div class="panel loading tilt" data-reveal>
-            <h3 class="card__title">NOW LOADING...</h3>
+            <h3 class="card__title" data-i18n="c.loading">NOW LOADING...</h3>
             <ul class="stats" id="learnStats">
-              </li>
               <li
                 class="stat stat--wide"
                 data-level="6"
@@ -622,15 +725,56 @@
                 data-level="4"
                 data-label="IN PROGRESS"
               >
-                <span class="stat__name">Compilers/ Interprets</span
+                <span class="stat__name" data-i18n="s.comp"
+                  >Compilers/ Interprets</span
                 ><span class="stat__bar"></span><span class="stat__val"></span>
               </li>
             </ul>
-            <p class="fact">
-              <span class="c-pink">FUN FACT:</span> In the world of Dune, AI is
-              banned after the Butlerian Jihad, so humans train their minds to
-              extreme levels. Mentats, for example, work as living computers.
-            </p>
+            <div
+              class="facts"
+              id="facts"
+              role="region"
+              aria-roledescription="carousel"
+              aria-label="Dune fun facts"
+              data-i18n-aria="aria.facts"
+            >
+              <div class="facts__head">
+                <span class="facts__label"
+                  ><span data-i18n="facts.label">FUN FACT</span>
+                  <b id="factNo">01/10</b
+                  ><em class="facts__src" id="factSrc"></em
+                ></span>
+                <span class="facts__ctrl">
+                  <button
+                    id="factPrev"
+                    type="button"
+                    aria-label="Previous fact"
+                    data-i18n-aria="aria.prev"
+                  >
+                    ◀
+                  </button>
+                  <button
+                    id="factNext"
+                    type="button"
+                    aria-label="Next fact"
+                    data-i18n-aria="aria.next"
+                  >
+                    ▶
+                  </button>
+                </span>
+              </div>
+              <div class="facts__stage" id="factStage">
+                <p class="fact is-active">
+                  In the world of Dune, AI is banned after the Butlerian Jihad,
+                  so humans train their minds to extreme levels. Mentats, for
+                  example, work as living computers.
+                </p>
+              </div>
+              <div class="facts__dots" id="factDots"></div>
+              <div class="facts__timer" aria-hidden="true">
+                <i id="factBar"></i>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -639,9 +783,11 @@
       <section id="contact" class="stage contact" data-title="Contact">
         <div class="wrap">
           <header class="stage__head" data-reveal>
-            <span class="kicker">FINAL STAGE</span>
-            <h2 data-scramble>INSERT COIN</h2>
-            <p class="stage__sub">Let's team up. Player 2 wanted.</p>
+            <span class="kicker" data-i18n="k.final">FINAL STAGE</span>
+            <h2 data-scramble data-i18n="h.contact">INSERT COIN</h2>
+            <p class="stage__sub" data-i18n="sub.contact">
+              Let's team up. Player 2 wanted.
+            </p>
           </header>
 
           <div class="grid grid--contact">
@@ -662,26 +808,31 @@
                 >
               </li>
               <li>
-                <span class="contact__k">BASE</span><span>Kolín, Czechia</span>
+                <span class="contact__k" data-i18n="k.base">BASE</span
+                ><span data-i18n="v.base">Kolín, Czechia</span>
               </li>
             </ul>
 
             <div class="cabinet" data-reveal="right">
               <div class="cabinet__screen">
-                <p class="cabinet__title">CONTINUE?</p>
+                <p class="cabinet__title" data-i18n="cab.continue">CONTINUE?</p>
                 <p class="cabinet__count" id="countdown">9</p>
-                <p class="cabinet__sub blink">INSERT COIN</p>
+                <p class="cabinet__sub blink" data-i18n="cab.coin">
+                  INSERT COIN
+                </p>
               </div>
               <a
                 class="btn btn--big"
                 id="coinBtn"
                 href="mailto:sandtner05@gmail.com"
+                data-i18n="cab.mail"
                 >● INSERT COIN / SEND MAIL</a
               >
               <button
                 class="btn btn--alt btn--small"
                 id="copyMail"
                 type="button"
+                data-i18n="cab.copy"
               >
                 COPY E-MAIL
               </button>
@@ -692,16 +843,22 @@
     </main>
 
     <footer class="footer">
-      <p>
+      <p data-i18n="foot.1">
         © <span id="year">2026</span> LUKÁŠ SANDTNER · BUILT WITH HTML, CSS
         &amp; JS · HOSTED ON GITHUB PAGES
       </p>
-      <p class="footer__hint">
+      <p class="footer__hint" data-i18n="foot.2">
         PSST... TRY THE KONAMI CODE: ↑ ↑ ↓ ↓ ← → ← → B A
       </p>
     </footer>
 
-    <button class="totop" id="toTop" type="button" aria-label="Back to top">
+    <button
+      class="totop"
+      id="toTop"
+      type="button"
+      aria-label="Back to top"
+      data-i18n-aria="aria.top"
+    >
       <span data-sprite="ship" data-px="3"></span>
     </button>
 
