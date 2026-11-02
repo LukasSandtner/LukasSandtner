@@ -1055,7 +1055,8 @@ html:not(.js) #boot {
   grid-template-columns: 15rem 1fr auto;
 }
 .stat--wide .stat__val {
-  min-width: 11ch;
+  min-width: 0;
+  white-space: nowrap;
   color: var(--cyan);
 }
 
@@ -1815,29 +1816,34 @@ body.konami .footer {
   }
   .hud__burger {
     display: grid;
-    gap: 5px;
-    padding: 10px;
-    background: none;
-    border: 2px solid var(--cyan);
+    align-content: center;
+    justify-items: center;
+    gap: 6px;
+    width: 48px;
+    height: 44px;
+    padding: 0;
+    background: rgba(0, 240, 255, 0.12);
+    border: 3px solid var(--cyan);
+    box-shadow: 0 0 12px rgba(0, 240, 255, 0.5);
     cursor: pointer;
   }
   .hud__burger i {
-    width: 22px;
-    height: 3px;
-    background: var(--cyan);
+    width: 28px;
+    height: 4px;
+    background: #fff;
     display: block;
     transition:
       transform 0.25s,
       opacity 0.25s;
   }
   .hud__burger[aria-expanded="true"] i:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
+    transform: translateY(10px) rotate(45deg);
   }
   .hud__burger[aria-expanded="true"] i:nth-child(2) {
     opacity: 0;
   }
   .hud__burger[aria-expanded="true"] i:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
+    transform: translateY(-10px) rotate(-45deg);
   }
   .hud__nav {
     position: fixed;
@@ -1857,9 +1863,13 @@ body.konami .footer {
     transform: none;
   }
   .hud__nav a {
-    font-size: 0.75rem;
-    padding: 1rem 0.5rem 1rem 1.4rem;
-    border-bottom: 2px dotted rgba(154, 150, 196, 0.3);
+    font-size: calc(0.95rem * var(--ps));
+    color: var(--ink);
+    padding: 1.15rem 0.5rem 1.15rem 1.8rem;
+    border-bottom: 2px dotted rgba(154, 150, 196, 0.35);
+  }
+  .hud__nav a.is-active {
+    color: var(--yellow);
   }
   .hud__nav a::before {
     left: 0;
@@ -1925,6 +1935,24 @@ body.konami .footer {
   .hud__item {
     display: none !important;
   }
+  .hud {
+    gap: 0.5rem;
+    padding: 0 0.6rem;
+  }
+  .hud__stats {
+    gap: 0.4rem;
+  }
+  .hud__logo {
+    font-size: calc(0.95rem * var(--ps));
+  }
+  .hud__snd {
+    padding: 0.5rem 0.4rem;
+  }
+  .hud__burger {
+    width: 44px;
+    height: 42px;
+    flex: none;
+  }
   .hud__snd {
     margin-left: 0;
   }
@@ -1933,6 +1961,30 @@ body.konami .footer {
   }
   .hero__lead {
     font-size: 1.5rem;
+  }
+  .toasts {
+    top: calc(var(--hud-h) + 8px);
+    right: 8px;
+    width: min(220px, 100% - 16px);
+    gap: 0.5rem;
+  }
+  .toast {
+    padding: 0.45rem 0.6rem;
+    border-width: 2px;
+    box-shadow:
+      3px 3px 0 var(--pink),
+      0 0 12px rgba(255, 230, 0, 0.3);
+    animation:
+      toast-in 0.3s steps(4) both,
+      toast-out 0.3s steps(4) 2.2s forwards;
+  }
+  .toast b {
+    font-size: calc(0.45rem * var(--ps));
+    margin-bottom: 0.2rem;
+  }
+  .toast span {
+    font-size: 1.05rem;
+    line-height: 1.1;
   }
   .btn {
     font-size: calc(0.68rem * var(--ps));
@@ -1950,23 +2002,17 @@ body.konami .footer {
   html {
     scroll-behavior: auto;
   }
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-  }
-  .crt::after {
+  .crt::after,
+  .glitch::before,
+  .glitch::after {
     animation: none;
   }
-  .js [data-reveal] {
-    opacity: 1;
-    transform: none;
+  .glitch::before,
+  .glitch::after {
+    display: none;
   }
-  .chips li {
-    opacity: 1;
-    transform: none;
+  .js [data-reveal] {
+    transition-duration: 0.3s;
   }
 }
 
@@ -1991,12 +2037,6 @@ html[lang="cs"] .marquee__track {
 html[lang="cs"] .cabinet__count {
   --ps: 1.3;
 }
-html[lang="cs"] .stat {
-  grid-template-columns: 10.5rem 1fr auto;
-}
-html[lang="cs"] .stat--wide {
-  grid-template-columns: 15rem 1fr auto;
-}
 .facts__src {
   font-style: normal;
   color: var(--yellow);
@@ -2017,4 +2057,12 @@ html[lang="cs"] .stat--wide {
   bottom: 0.5rem;
   left: auto;
   top: auto;
+}
+
+/* keep slide-in reveals and the tilted marquee from widening the page on phones */
+html {
+  overflow-x: hidden;
+}
+main {
+  overflow-x: clip;
 }

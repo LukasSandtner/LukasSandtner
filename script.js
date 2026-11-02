@@ -127,10 +127,28 @@
   let audio = null;
   let soundOn = true;
 
-  function beep(freq = 440, dur = 0.08, type = "square", vol = 0.04, to = 0) {
+  // iOS mutes Web Audio while the ring switch is on silent, unless a media element is playing
+  function unlockAudio() {
+    try {
+      audio = audio || new (window.AudioContext || window.webkitAudioContext)();
+      audio.resume();
+      const el = document.createElement("audio");
+      el.setAttribute("playsinline", "");
+      el.src =
+        "data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAAIhYAQACABAAZGF0YQAAAAA=";
+      el.loop = true;
+      const pr = el.play();
+      if (pr && pr.catch) pr.catch(() => {});
+    } catch (e) {
+      /* audio unavailable */
+    }
+  }
+
+  function beep(freq = 440, dur = 0.08, type = "square", vol = 0.08, to = 0) {
     if (!soundOn) return;
     try {
       audio = audio || new (window.AudioContext || window.webkitAudioContext)();
+      if (audio.state === "suspended") audio.resume();
       const t = audio.currentTime;
       const o = audio.createOscillator();
       const g = audio.createGain();
@@ -176,7 +194,8 @@
   const toastBox = $("#toasts");
   function toast(title, text) {
     if (!toastBox) return;
-    while (toastBox.children.length >= 3) toastBox.firstElementChild.remove();
+    const maxToasts = innerWidth < 560 ? 1 : 3;
+    while (toastBox.children.length >= maxToasts) toastBox.firstElementChild.remove();
     const el = document.createElement("div");
     el.className = "toast";
     const b = document.createElement("b");
@@ -302,10 +321,6 @@
   function startTyped() {
     if (typedStarted || !typedEl) return;
     typedStarted = true;
-    if (reduce) {
-      typedEl.textContent = roles()[0];
-      return;
-    }
     let r = 0;
     let c = 0;
     let del = false;
@@ -445,7 +460,6 @@
     buildSun();
     buildBase(dpr);
     measureMarquee();
-    if (reduce) drawBg(0);
   }
 
   function drawBg(t) {
@@ -638,7 +652,7 @@
         else if (i >= 5) seg.classList.add("warm");
         if (i % 2 === 0) beep(300 + i * 60, 0.03, "square", 0.012);
         i++;
-        setTimeout(next, reduce ? 0 : 75);
+        setTimeout(next, 75);
       } else {
         val.textContent = statLabel(li);
       }
@@ -648,7 +662,7 @@
 
   function countUp(el) {
     const target = +el.dataset.count || 0;
-    if (reduce || target === 0) {
+    if (target === 0) {
       el.textContent = target;
       return;
     }
@@ -755,7 +769,7 @@
       let iv = null;
       new IntersectionObserver(
         (en) => {
-          if (en[0].isIntersecting && !iv && !reduce) {
+          if (en[0].isIntersecting && !iv) {
             iv = setInterval(() => {
               n = n <= 0 ? 9 : n - 1;
               cd.textContent = n;
@@ -824,10 +838,15 @@
       btn.setAttribute("aria-label", tr("coin_aria"));
       btn.dataset.sprite = "coin";
       btn.dataset.px = "4";
-      const left = i % 2 === 0 ? 1 + Math.random() * 5 : 92 + Math.random() * 4;
-      const top = 14 + Math.random() * 68;
-      btn.style.left = left + "%";
-      btn.style.top = top + "%";
+      if (innerWidth < 900) {
+        const side = Math.random() < 0.5 ? 8 + Math.random() * 22 : 68 + Math.random() * 22;
+        btn.style.left = side + "%";
+        btn.style.top = "calc(100% - 2.9rem)";
+      } else {
+        const left = i % 2 === 0 ? 1 + Math.random() * 5 : 92 + Math.random() * 4;
+        btn.style.left = left + "%";
+        btn.style.top = 14 + Math.random() * 68 + "%";
+      }
       state.coinsMax++;
       // the last coin (contact section) is hidden in the 10th fun fact instead
       if (i === stages.length - 1) return;
@@ -909,7 +928,10 @@
       soundOn = !soundOn;
       snd.setAttribute("aria-pressed", String(soundOn));
       snd.textContent = soundOn ? tr("snd_on") : tr("snd_off");
-      if (soundOn) sfx.power();
+      if (soundOn) {
+        unlockAudio();
+        sfx.power();
+      }
     });
 
     // buttons
@@ -1486,18 +1508,5 @@
 
   runBoot();
 
-  if (reduce) {
-    addEventListener("scroll", () => drawBg(0), { passive: true });
-    state.shown = state.score;
-    scoreEl.textContent = pad(state.score, 6);
-    addEventListener(
-      "scroll",
-      () => {
-        scoreEl.textContent = pad(state.score, 6);
-      },
-      { passive: true },
-    );
-  } else {
-    requestAnimationFrame(loop);
-  }
+  requestAnimationFrame(loop);
 })();
