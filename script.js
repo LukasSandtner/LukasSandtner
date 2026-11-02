@@ -195,7 +195,8 @@
   function toast(title, text) {
     if (!toastBox) return;
     const maxToasts = innerWidth < 560 ? 1 : 3;
-    while (toastBox.children.length >= maxToasts) toastBox.firstElementChild.remove();
+    while (toastBox.children.length >= maxToasts)
+      toastBox.firstElementChild.remove();
     const el = document.createElement("div");
     el.className = "toast";
     const b = document.createElement("b");
@@ -839,11 +840,15 @@
       btn.dataset.sprite = "coin";
       btn.dataset.px = "4";
       if (innerWidth < 900) {
-        const side = Math.random() < 0.5 ? 8 + Math.random() * 22 : 68 + Math.random() * 22;
+        const side =
+          Math.random() < 0.5
+            ? 8 + Math.random() * 22
+            : 68 + Math.random() * 22;
         btn.style.left = side + "%";
         btn.style.top = "calc(100% - 2.9rem)";
       } else {
-        const left = i % 2 === 0 ? 1 + Math.random() * 5 : 92 + Math.random() * 4;
+        const left =
+          i % 2 === 0 ? 1 + Math.random() * 5 : 92 + Math.random() * 4;
         btn.style.left = left + "%";
         btn.style.top = 14 + Math.random() * 68 + "%";
       }
